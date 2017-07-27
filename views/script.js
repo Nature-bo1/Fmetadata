@@ -4,6 +4,11 @@ function handleSubmit() {
 
   if (!document.forms.fileUpload.elements.userFile.value) return;
 
+  if (document.forms.fileUpload.elements.userFile.files[0].size >= 5000000) {
+    document.getElementById("response").innerHTML = "LIMIT_FILE_SIZE is 5 Mb";
+    return;
+  }
+
   var xhr = new XMLHttpRequest(),
       formData = new FormData(document.forms.fileUpload);
 
